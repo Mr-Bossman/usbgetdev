@@ -32,6 +32,9 @@ endif
 
 ifneq (, $(findstring linux, $(HOST)))
 C_SOURCES += src/linux_lib.c
+else ifneq (, $(findstring darwin, $(HOST)))
+C_SOURCES += src/darwin_lib.c
+LDFLAGS += -framework IOKit -framework CoreFoundation
 else
 $(error 'Could not determine the host type. Please set the $$HOST variable.')
 endif

@@ -24,6 +24,7 @@
 /* Both kIOMasterPortDefault or kIOMainPortDefault are synonyms for 0. */
 static const mach_port_t darwin_default_master_port = 0;
 
+/* The function below was taken from the libusb project */
 static io_service_t usb_find_interface_matching_location (const io_name_t class_name, UInt8 interface_number, UInt32 location) {
 	CFMutableDictionaryRef matchingDict = IOServiceMatching (class_name);
 	CFMutableDictionaryRef propertyMatchDict = CFDictionaryCreateMutable (kCFAllocatorDefault, 0,

@@ -121,6 +121,7 @@ static int get_parent(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_dat
 	return 0;
 }
 
+/* Derived from https://github.com/wjwwood/serial/blob/main/src/impl/list_ports/list_ports_win.cc */
 static int get_chardev(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_data, char** path) {
 	HKEY hkey;
 	LSTATUS return_code;
@@ -164,7 +165,7 @@ static int get_chardev(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_da
 
 	return 0;
 }
-
+/* derived from https://stackoverflow.com/a/18183115/11357530 */
 static int get_blockdev(HDEVINFO device_info_set, PSP_DEVICE_INTERFACE_DATA device_interface_data,char** path) {
 	PSP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData;
 	DWORD requiredSize;

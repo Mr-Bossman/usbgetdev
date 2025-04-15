@@ -109,7 +109,7 @@ static int get_subsytem(char **buf,
 	return ret;
 }
 
-#ifdef libusb_get_platform_device_id
+#ifdef HAVE_PLAT_DEVID
 static int get_sysfs_dir(struct libusb_device *dev, char **path)
 {
 	return libusb_get_platform_device_id(dev, path);

@@ -17,7 +17,7 @@ static int get_parent(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_dat
 static int get_chardev(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_data, char** com);
 static int get_blockdev(HDEVINFO device_info_set, PSP_DEVICE_INTERFACE_DATA device_interface_data, char **path);
 
-#ifdef libusb_get_platform_device_id
+#ifdef HAVE_PLAT_DEVID
 static int get_devid(struct libusb_device *dev, char **DeviceID)
 {
 	return libusb_get_platform_device_id(dev, DeviceID);

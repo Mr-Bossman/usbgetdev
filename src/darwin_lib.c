@@ -1,5 +1,6 @@
 #include "libusb.h"
-#include "lib.h"
+#include "libusbgetdev.h"
+#include "libusbgetdevi.h"
 
 #include <IOKit/IOTypes.h>
 #include <IOKit/IOCFBundle.h>

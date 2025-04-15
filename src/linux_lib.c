@@ -8,7 +8,8 @@
 #include <dirent.h>
 
 #include "libusb.h"
-#include "lib.h"
+#include "libusbgetdev.h"
+#include "libusbgetdevi.h"
 
 #define SYSFS_DEVICE_PATH "/sys/bus/usb/devices"
 

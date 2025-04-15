@@ -23,7 +23,7 @@
 #include <stdlib.h>
 
 #include "libusb.h"
-#include "lib.h"
+#include "libusbgetdev.h"
 
 static void print_devs(libusb_device **devs)
 {

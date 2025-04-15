@@ -10,7 +10,8 @@
 #include <Devpkey.h>
 
 #include "libusb.h"
-#include "lib.h"
+#include "libusbgetdev.h"
+#include "libusbgetdevi.h"
 
 static int match_dev_path(enum usbi_dev_type dev_type, const char *dev_reg_path, char **path);
 static int get_parent(HDEVINFO device_info_set, PSP_DEVINFO_DATA device_info_data, char** parent);

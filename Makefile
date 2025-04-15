@@ -7,7 +7,7 @@ CFLAGS :=	-Wall \
 LDFLAGS :=
 
 HOST := $(shell $(CC) -dumpmachine)
-C_SOURCES = src/listdevs.c src/lib.c
+C_SOURCES = src/listdevs.c src/libusbgetdev.c
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 DEPS = $(OBJECTS:%.o=%.d)
 

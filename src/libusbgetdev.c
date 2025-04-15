@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 #include "libusb.h"
-#include "lib.h"
+#include "libusbgetdev.h"
+#include "libusbgetdevi.h"
 
 /** \ingroup libusb_misc
  * Get the block device path of USB resource.

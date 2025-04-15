@@ -1,13 +1,15 @@
 BUILD_DIR = build
+LIBRARY = libusbgetdev
 PROGRAM = listdevs
 
 CFLAGS :=	-Wall \
-		-Wextra
+		-Wextra \
+		-fPIC
 
 LDFLAGS :=
 
 HOST := $(shell $(CC) -dumpmachine)
-C_SOURCES = src/listdevs.c src/libusbgetdev.c
+C_SOURCES := src/libusbgetdev.c
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 DEPS = $(OBJECTS:%.o=%.d)
 
@@ -42,12 +44,15 @@ else
 $(error 'Could not determine the host type. Please set the $$HOST variable.')
 endif
 
-.PHONY: all clean debug
+.PHONY: all clean debug example
 
-all: $(PROGRAM)
+all: $(LIBRARY).so $(LIBRARY).a
 
 debug: CFLAGS += -g
 debug: all
+
+example:
+	@$(MAKE) $(PROGRAM) C_SOURCES="$(C_SOURCES) src/listdevs.c"
 
 $(OBJECTS): | $(BUILD_DIR)
 
@@ -60,6 +65,12 @@ $(BUILD_DIR)/%.o: %.c
 
 $(PROGRAM): $(OBJECTS)
 	$(CC) $^ $(LDFLAGS) -o $@
+
+$(LIBRARY).so: $(OBJECTS)
+	$(CC) -shared $^ $(LDFLAGS) -o $@
+
+$(LIBRARY).a: $(OBJECTS)
+	$(AR) rcs $@ $^
 
 clean:
 	-rm -rf $(BUILD_DIR)

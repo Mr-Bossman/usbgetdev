@@ -35,6 +35,9 @@ C_SOURCES += src/linux_lib.c
 else ifneq (, $(findstring darwin, $(HOST)))
 C_SOURCES += src/darwin_lib.c
 LDFLAGS += -framework IOKit -framework CoreFoundation
+else ifneq (, $(findstring msys, $(HOST)))
+C_SOURCES += src/windows_lib.c
+LDFLAGS += -lsetupapi
 else
 $(error 'Could not determine the host type. Please set the $$HOST variable.')
 endif
